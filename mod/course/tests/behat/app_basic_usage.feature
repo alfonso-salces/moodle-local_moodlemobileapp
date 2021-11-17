@@ -504,6 +504,7 @@ Feature: Test basic usage of one course in app
     And I should find "Test lesson name" in the app
     And I should find "Test scorm name" in the app
     And I should find "Test workshop name" in the app
+    Then I press "Open block drawer" in the app
     And I should find "HTML title test" in the app
     And I should find "body test" in the app
     And I should find "Activities" in the app
