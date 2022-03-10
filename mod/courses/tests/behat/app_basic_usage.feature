@@ -113,9 +113,8 @@ Feature: Test basic usage of courses in app
     And I press "Open in browser" in the app
     And I switch to the browser tab opened by the app
     And I log in as "teacher1"
-    And I press "Actions menu"
-    And I follow "Settings"
-    And I press "Expand all"
+    And I navigate to "Settings" in current page administration
+    And I click on "Expand all" "link"
     And I click on "duedate[enabled]" "checkbox"
     And I click on "gradingduedate[enabled]" "checkbox"
     And I press "Save and return to course"
