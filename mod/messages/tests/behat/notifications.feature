@@ -39,7 +39,7 @@ Feature: Main Menu opens the right page
       | Test 29  | student2 | student1 | 1649766628  | 1649766602 |
       | Test 30  | student2 | student1 | 1649766629  | null       |
 
-
+  @alfonsodebug
   Scenario: Mobile navigation
     Given I enter the app
     And I log in as "student1"
@@ -50,8 +50,24 @@ Feature: Main Menu opens the right page
     Then I should find "Test 10" in the app
     And I should find "Test 01" in the app
 
+    # Receive a push notification
+    And the following "notifications" exist: 
+      | subject | userfrom | userto   | timecreated | timeread   |
+      | Test 31 | student2 | student1 | 1649766631  | null       |
+    When I receive a push notification in the app for:
+      | username | title   | message   |
+      | student1 | Test 31 | Test push |
+    Then I should find "Test 31" in the app
+
+    # Open push notification
+    When I click on a push notification in the app for:
+      | username | message   | title   | subject | userfrom |
+      | student1 | Test push | Test 48 | Push 01 | student2 |
+    Then I should find "Push 01" in the app
+
     # Open notification detail
-    When I press "Test 30" in the app
+    When I press the back button in the app
+    And I press "Test 30" in the app
     Then I should find "Test 30 description" in the app
 
     # Go back and open other notification
